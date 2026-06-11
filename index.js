@@ -203,9 +203,14 @@ async function generateDeck(data) {
     s.addShape("roundRect", { x: 0.5, y: 3.6, w: 3.5, h: 0.68, fill: { color: C.red }, line: { color: C.red, width: 0 }, rectRadius: 0.05, shadow: { type: "outer", color: "000000", blur: 10, offset: 3, angle: 45, opacity: 0.4 } });
     s.addText(cta_line || "", { x: 0.5, y: 3.6, w: 3.5, h: 0.68, fontSize: 12, fontFace: "Arial", color: C.white, bold: true, align: "center", valign: "middle", margin: 0 });
 
-    s.addText("contact@pro-scalemedia.com", { x: 0.5, y: 4.48, w: 5, h: 0.26, fontSize: 10, fontFace: "Arial", color: C.red, margin: 0 });
-    s.addText("pro-scalemedia.com  ·  Dubai, UAE", { x: 0.5, y: 4.76, w: 5, h: 0.22, fontSize: 9, fontFace: "Arial", color: C.muted, margin: 0 });
-  }
+    s.addText("📅 calendly.com/contact-pro-scalemedia/30min", {
+  x: 0.5, y: 4.48, w: 5.2, h: 0.26,
+  fontSize: 9, fontFace: "Arial", color: "FE0000", margin: 0,
+});
+s.addText("contact@pro-scalemedia.com  ·  pro-scalemedia.com  ·  Dubai, UAE", {
+  x: 0.5, y: 4.76, w: 5.5, h: 0.22,
+  fontSize: 9, fontFace: "Arial", color: "555555", margin: 0,
+});
 
   // ── RETURN AS BUFFER ────────────────────────────
   return await pres.write({ outputType: "nodebuffer" });
