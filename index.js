@@ -174,8 +174,8 @@ async function generateDeck(data) {
 
     s.addShape("roundRect", { x: 0.5, y: 3.55, w: 9.0, h: 1.72, fill: { color: C.redLight }, line: { color: C.red, width: 0.4 }, rectRadius: 0.07 });
     s.addText("\u201C", { x: 0.7, y: 3.48, w: 0.6, h: 0.65, fontSize: 52, fontFace: "Arial", color: C.red, bold: true, margin: 0 });
-    s.addText("We don't guess — we diagnose, build, and scale. Every strategy is built on data from your market, not templates from another industry.", { x: 1.3, y: 3.72, w: 7.8, h: 0.85, fontSize: 12, fontFace: "Arial", color: C.offWhite, italic: true, margin: 0 });
-    s.addText("— ProScaleMedia, Dubai", { x: 1.3, y: 4.6, w: 5, h: 0.28, fontSize: 10, fontFace: "Arial", color: C.red, margin: 0 });
+    s.addText("We don't guess. We diagnose, build, and scale. Every strategy is built on data from your market, not templates from another industry.", { x: 1.3, y: 3.72, w: 7.8, h: 0.85, fontSize: 12, fontFace: "Arial", color: C.offWhite, italic: true, margin: 0 });
+    s.addText("— ProScaleMEDIA, Dubai", { x: 1.3, y: 4.6, w: 5, h: 0.28, fontSize: 10, fontFace: "Arial", color: C.red, margin: 0 });
   }
 
   // ── SLIDE 5 — CTA ───────────────────────────────
@@ -203,8 +203,8 @@ async function generateDeck(data) {
     s.addShape("roundRect", { x: 0.5, y: 3.6, w: 3.5, h: 0.68, fill: { color: C.red }, line: { color: C.red, width: 0 }, rectRadius: 0.05, shadow: { type: "outer", color: "000000", blur: 10, offset: 3, angle: 45, opacity: 0.4 } });
     s.addText(cta_line || "", { x: 0.5, y: 3.6, w: 3.5, h: 0.68, fontSize: 12, fontFace: "Arial", color: C.white, bold: true, align: "center", valign: "middle", margin: 0 });
 
-    s.addText("hello@proscalemedia.com", { x: 0.5, y: 4.48, w: 5, h: 0.26, fontSize: 10, fontFace: "Arial", color: C.red, margin: 0 });
-    s.addText("proscalemedia.com  ·  Dubai, UAE", { x: 0.5, y: 4.76, w: 5, h: 0.22, fontSize: 9, fontFace: "Arial", color: C.muted, margin: 0 });
+    s.addText("contact@pro-scalemedia.com", { x: 0.5, y: 4.48, w: 5, h: 0.26, fontSize: 10, fontFace: "Arial", color: C.red, margin: 0 });
+    s.addText("pro-scalemedia.com  ·  Dubai, UAE", { x: 0.5, y: 4.76, w: 5, h: 0.22, fontSize: 9, fontFace: "Arial", color: C.muted, margin: 0 });
   }
 
   // ── RETURN AS BUFFER ────────────────────────────
@@ -220,7 +220,7 @@ app.post("/generate", async (req, res) => {
     if (!data.company_name) return res.status(400).json({ error: "company_name required" });
 
     const buffer = await generateDeck(data);
-    const filename = `ProScaleMedia_${(data.company_name).replace(/[^a-z0-9]/gi, "_")}.pptx`;
+    const filename = `ProScaleMEDIA_${(data.company_name).replace(/[^a-z0-9]/gi, "_")}.pptx`;
 
     res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.presentationml.presentation");
     res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
