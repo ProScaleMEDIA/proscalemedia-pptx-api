@@ -211,6 +211,9 @@ s.addText("contact@pro-scalemedia.com  ·  pro-scalemedia.com  ·  Dubai, UAE", 
   x: 0.5, y: 4.76, w: 5.5, h: 0.22,
   fontSize: 9, fontFace: "Arial", color: "555555", margin: 0,
 });
+  }
+
+  // ── RETURN AS BUFFER ────────────────────────────
 
   // ── RETURN AS BUFFER ────────────────────────────
   return await pres.write({ outputType: "nodebuffer" });
