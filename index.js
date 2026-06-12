@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 // ─── LOGO (base64 embedded) ───────────────────────────────────────
-const LOGO_B64 = "image/png;base64,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";
+const LOGO_B64 = null;
 
 // ─── BRAND PALETTE ───────────────────────────────────────────────
 const C = {
@@ -42,7 +42,7 @@ function redLine(slide, x, y, w = 1.0) {
 function topBar(slide, label) {
   slide.addShape("rect", { x: 0, y: 0, w: 10, h: 0.62, fill: { color: C.black }, line: { color: C.black, width: 0 } });
   slide.addShape("rect", { x: 0, y: 0.6, w: 10, h: 0.04, fill: { color: C.red }, line: { color: C.red, width: 0 } });
-  slide.addImage({ data: LOGO_B64, x: 0.4, y: 0.06, w: 2.4, h: 0.5 });
+// slide.addImage({ data: LOGO_B64, x: 0.4, y: 0.06, w: 2.4, h: 0.5 });
   if (label) {
     slide.addText(label, {
       x: 6.5, y: 0.18, w: 3.3, h: 0.26,
@@ -80,8 +80,7 @@ solution_emoji_1, solution_emoji_2, solution_emoji_3,
     const s = pres.addSlide();
     s.background = { color: C.black };
 
-    s.addImage({ data: LOGO_B64, x: 0.5, y: 0.35, w: 3.2, h: 0.72 });
-    redLine(s, 0.5, 1.22, 1.5);
+  // s.addImage({ data: LOGO_B64, x: 0.5, y: 0.35, w: 3.2, h: 0.72 });
 
     s.addText("BRAND GROWTH AGENCY · DUBAI", {
       x: 0.5, y: 1.34, w: 5.5, h: 0.24,
