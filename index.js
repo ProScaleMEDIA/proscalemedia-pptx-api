@@ -65,7 +65,7 @@ async function generateDeck(data) {
     company_name, website, audit_score, headline,
     problem_1, problem_2, problem_3,
     solution_1, solution_2, solution_3,
-    solution_emoji_1, solution_emoji_2, solution_emoji_3,
+solution_emoji_1, solution_emoji_2, solution_emoji_3,
     proof_stat_1, proof_label_1,
     proof_stat_2, proof_label_2,
     proof_stat_3, proof_label_3,
@@ -142,7 +142,7 @@ async function generateDeck(data) {
     });
   }
 
-  // ── SLIDE 3 — SOLUTION ──────────────────────────
+// ── SLIDE 3 — SOLUTION ──────────────────────────
   {
     const s = pres.addSlide();
     s.background = { color: C.black };
