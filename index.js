@@ -145,17 +145,57 @@ async function generateDeck(data) {
     s.addText("How We Fix It", { x: 0.5, y: 0.82, w: 7, h: 0.72, fontSize: 28, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
     redLine(s, 0.5, 1.57, 1.0);
 
-    const sIcons = ["fa/FaRocket", "fa/FaChartLine", "fa/FaBullseye"];
-    const sLoaded = await Promise.all(sIcons.map(i => iconBase64(i, "#FE0000")));
     const solutions = [solution_1, solution_2, solution_3];
+    const emojis = [solution_emoji_1, solution_emoji_2, solution_emoji_3];
 
     solutions.forEach((sol, i) => {
       const x = 0.5 + i * 3.1;
-      s.addShape("roundRect", { x, y: 1.82, w: 2.88, h: 3.45, fill: { color: C.cardBg }, line: { color: "333333", width: 0.5 }, rectRadius: 0.08, shadow: mkShadow() });
-      s.addShape("oval", { x: x+0.94, y: 2.02, w: 0.88, h: 0.88, fill: { color: C.red }, line: { color: C.red, width: 0 } });
-      s.addImage({ data: sLoaded[i], x: x+1.03, y: 2.11, w: 0.46, h: 0.46 });
-      s.addText(`0${i+1}`, { x: x+0.1, y: 3.02, w: 2.68, h: 0.3, fontSize: 10, fontFace: "Arial", color: C.red, bold: true, align: "center", margin: 0 });
-      s.addText(sol || "", { x: x+0.18, y: 3.35, w: 2.52, h: 1.75, fontSize: 12, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0 });
+      const cardW = 2.88;
+      const cardH = 3.6;
+      const cardY = 1.82;
+
+      // Card background
+      s.addShape("roundRect", {
+        x, y: cardY, w: cardW, h: cardH,
+        fill: { color: C.cardBg },
+        line: { color: "2A2A2A", width: 0.8 },
+        rectRadius: 0.1,
+        shadow: mkShadow(),
+      });
+
+      // Top red accent bar
+      s.addShape("rect", {
+        x, y: cardY, w: cardW, h: 0.06,
+        fill: { color: C.red },
+        line: { color: C.red, width: 0 },
+      });
+
+      // Step number top-left
+      s.addText(`0${i + 1}`, {
+        x: x + 0.14, y: cardY + 0.16, w: 0.36, h: 0.3,
+        fontSize: 9, fontFace: "Arial", color: C.red,
+        bold: true, margin: 0,
+      });
+
+      // Emoji circle background
+      s.addShape("oval", {
+        x: x + 0.84, y: cardY + 0.18, w: 1.2, h: 1.2,
+        fill: { color: "1A1A1A" },
+        line: { color: C.red, width: 1.2 },
+      });
+
+      // Emoji
+      s.addText(emojis[i] || "⚡", {
+        x: x + 0.84, y: cardY + 0.22, w: 1.2, h: 1.1,
+        fontSize: 32, align: "center", valign: "middle", margin: 0,
+      });
+
+      // Solution text
+      s.addText(sol || "", {
+        x: x + 0.18, y: cardY + 1.62, w: cardW - 0.36, h: 1.8,
+        fontSize: 11.5, fontFace: "Arial", color: C.offWhite,
+        align: "center", margin: 0,
+      });
     });
   }
 
