@@ -8,8 +8,9 @@ const app = express();
 app.use(express.json());
 
 // ─── LOGO (base64 embedded) ───────────────────────────────────────
-const LOGO_B64 = null;
-
+const fs = require("fs");
+const path = require("path");
+const LOGO_B64 = "image/png;base64," + fs.readFileSync(path.join(__dirname, "logo.png")).toString("base64");
 // ─── BRAND PALETTE ───────────────────────────────────────────────
 const C = {
   white:    "FFFFFF",
@@ -42,8 +43,7 @@ function redLine(slide, x, y, w = 1.0) {
 function topBar(slide, label) {
   slide.addShape("rect", { x: 0, y: 0, w: 10, h: 0.62, fill: { color: C.black }, line: { color: C.black, width: 0 } });
   slide.addShape("rect", { x: 0, y: 0.6, w: 10, h: 0.04, fill: { color: C.red }, line: { color: C.red, width: 0 } });
-// slide.addImage({ data: LOGO_B64, x: 0.4, y: 0.06, w: 2.4, h: 0.5 });
-  if (label) {
+  slide.addImage({ data: LOGO_B64, x: 0.4, y: 0.06, w: 2.4, h: 0.5 });  if (label) {
     slide.addText(label, {
       x: 6.5, y: 0.18, w: 3.3, h: 0.26,
       fontSize: 7.5, fontFace: "Arial", color: "555555",
@@ -80,7 +80,7 @@ solution_emoji_1, solution_emoji_2, solution_emoji_3,
     const s = pres.addSlide();
     s.background = { color: C.black };
 
-  // s.addImage({ data: LOGO_B64, x: 0.5, y: 0.35, w: 3.2, h: 0.72 });
+s.addImage({ data: LOGO_B64, x: 0.5, y: 0.35, w: 3.2, h: 0.72 });
 
     s.addText("BRAND GROWTH AGENCY · DUBAI", {
       x: 0.5, y: 1.34, w: 5.5, h: 0.24,
