@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 // ─── LOGO (base64 embedded) ───────────────────────────────────────
-const LOGO_B64 = null;
+slide.addImage({ path: "https://your-public-url/logo.png", x: 0.4, y: 0.06, w: 2.4, h: 0.5 });
 
 // ─── BRAND PALETTE ───────────────────────────────────────────────
 const C = {
