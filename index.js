@@ -145,7 +145,6 @@ async function generateDeck(data) {
     s.addText("How We Fix It", { x: 0.5, y: 0.82, w: 7, h: 0.72, fontSize: 28, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
     redLine(s, 0.5, 1.57, 1.0);
 
-   const { solution_icon_1, solution_icon_2, solution_icon_3 } = data;
 const solutions = [solution_1, solution_2, solution_3];
 const iconNames = [
   solution_icon_1 || "FaRocket",
