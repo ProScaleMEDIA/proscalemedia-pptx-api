@@ -107,7 +107,7 @@ async function generateDeck(data) {
       { x: 7.67, y: 2.3, w: 0.2,  h: 3.3 }, { x: 7.96, y: 3.1, w: 0.28, h: 2.5 },
       { x: 8.32, y: 2.7, w: 0.2,  h: 2.9 }, { x: 8.6,  y: 3.4, w: 0.3,  h: 2.2 },
       { x: 8.98, y: 3.0, w: 0.22, h: 2.6 }, { x: 9.28, y: 3.5, w: 0.28, h: 2.1 },
-      { x: 9.64, y: 3.2, w: 0.2,  h: 2.4 },
+      c{ x: 9.64, y: 3.2, w: 0.2,  h: 2.4 },
     ];
     bldgs.forEach(b => s.addShape("rect", { x: b.x, y: b.y, w: b.w, h: b.h, fill: { color: "222222" }, line: { color: "222222", width: 0 } }));
     s.addShape("rect", { x: 6.3, y: 5.54, w: 3.7, h: 0.085, fill: { color: C.red }, line: { color: C.red, width: 0 } });
