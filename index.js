@@ -153,9 +153,9 @@ const sLoaded = await Promise.all(
     solutions.forEach((sol, i) => {
       const x = 0.5 + i * 3.1;
       s.addShape("roundRect", { x, y: 1.82, w: 2.88, h: 3.45, fill: { color: C.cardBg }, line: { color: "333333", width: 0.5 }, rectRadius: 0.08, shadow: mkShadow() });
-      s.addImage({ data: sLoaded[i], x: x+1.21, y: 1.90, w: 0.46, h: 0.46 });
-      s.addText(`0${i+1}`, { x: x+0.1, y: 2.40, w: 2.68, h: 0.3, fontSize: 10, fontFace: "Arial", color: C.red, bold: true, align: "center", margin: 0 });
-      s.addText(sol || "", { x: x+0.18, y: 2.76, w: 2.52, h: 2.34, fontSize: 12, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0 });
+      s.addText(`0${i+1}`, { x: x+0.1, y: 2.10, w: 2.68, h: 0.36, fontSize: 13, fontFace: "Arial", color: C.red, bold: true, align: "center", margin: 0 });
+      s.addImage({ data: sLoaded[i], x: x+1.21, y: 2.50, w: 0.46, h: 0.46 });
+      s.addText(sol || "", { x: x+0.18, y: 3.02, w: 2.52, h: 2.08, fontSize: 12, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0 });
     });
   }
 
