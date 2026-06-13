@@ -145,9 +145,10 @@ async function generateDeck(data) {
     s.addText("How We Fix It", { x: 0.5, y: 0.82, w: 7, h: 0.72, fontSize: 28, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
     redLine(s, 0.5, 1.57, 1.0);
 
-    const sIcons = ["fa/FaRocket", "fa/FaChartLine", "fa/FaBullseye"];
-    const sLoaded = await Promise.all(sIcons.map(i => iconBase64(i, "#FE0000")));
     const solutions = [solution_1, solution_2, solution_3];
+const sLoaded = await Promise.all(
+  ["fa/FaRocket", "fa/FaChartLine", "fa/FaBullseye"].map(i => iconBase64(i, "#FFFFFF", 128))
+);
 
     solutions.forEach((sol, i) => {
       const x = 0.5 + i * 3.1;
