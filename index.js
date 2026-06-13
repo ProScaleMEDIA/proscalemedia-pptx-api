@@ -145,24 +145,19 @@ async function generateDeck(data) {
     s.addText("How We Fix It", { x: 0.5, y: 0.82, w: 7, h: 0.72, fontSize: 28, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
     redLine(s, 0.5, 1.57, 1.0);
 
-const solutions = [solution_1, solution_2, solution_3];
-const iconNames = [
-  solution_icon_1 || "FaRocket",
-  solution_icon_2 || "FaChartLine",
-  solution_icon_3 || "FaBullseye"
-];
-const sLoaded = await Promise.all(
-  iconNames.map(name => iconBase64(`fa/${name}`, "#FFFFFF", 128))
-);
+    const sIcons = ["fa/FaRocket", "fa/FaChartLine", "fa/FaBullseye"];
+    const sLoaded = await Promise.all(sIcons.map(i => iconBase64(i, "#FE0000")));
+    const solutions = [solution_1, solution_2, solution_3];
 
-solutions.forEach((sol, i) => {
-  const x = 0.5 + i * 3.1;
-  s.addShape("roundRect", { x, y: 1.82, w: 2.88, h: 3.45, fill: { color: C.cardBg }, line: { color: "333333", width: 0.5 }, rectRadius: 0.08, shadow: mkShadow() });
-  s.addShape("oval", { x: x+0.94, y: 2.02, w: 0.88, h: 0.88, fill: { color: C.red }, line: { color: C.red, width: 0 } });
-  s.addImage({ data: sLoaded[i], x: x+1.06, y: 2.14, w: 0.42, h: 0.42 });
-  s.addText(`0${i+1}`, { x: x+0.1, y: 3.02, w: 2.68, h: 0.3, fontSize: 10, fontFace: "Arial", color: C.red, bold: true, align: "center", margin: 0 });
-  s.addText(sol || "", { x: x+0.18, y: 3.35, w: 2.52, h: 1.75, fontSize: 12, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0 });
-});
+    solutions.forEach((sol, i) => {
+      const x = 0.5 + i * 3.1;
+      s.addShape("roundRect", { x, y: 1.82, w: 2.88, h: 3.45, fill: { color: C.cardBg }, line: { color: "333333", width: 0.5 }, rectRadius: 0.08, shadow: mkShadow() });
+      s.addShape("oval", { x: x+0.94, y: 2.02, w: 0.88, h: 0.88, fill: { color: C.red }, line: { color: C.red, width: 0 } });
+      s.addImage({ data: sLoaded[i], x: x+1.03, y: 2.11, w: 0.46, h: 0.46 });
+      s.addText(`0${i+1}`, { x: x+0.1, y: 3.02, w: 2.68, h: 0.3, fontSize: 10, fontFace: "Arial", color: C.red, bold: true, align: "center", margin: 0 });
+      s.addText(sol || "", { x: x+0.18, y: 3.35, w: 2.52, h: 1.75, fontSize: 12, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0 });
+    });
+  }
 
   // ── SLIDE 4 — PROOF ─────────────────────────────
   {
