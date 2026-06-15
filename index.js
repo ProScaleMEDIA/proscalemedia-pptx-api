@@ -146,10 +146,14 @@ async function generateDeck(data) {
     redLine(s, 0.5, 1.57, 1.0);
 
     const solutions = [solution_1, solution_2, solution_3];
-const sLoaded = await Promise.all(
-  ["fa/FaRocket", "fa/FaChartLine", "fa/FaBullseye"].map(i => iconBase64(i, "#FFFFFF", 128))
-);
-
+    const iconNames = [
+    (data.solution_icon_1 || "FaRocket"),
+    (data.solution_icon_2 || "FaChartLine"),
+    (data.solution_icon_3 || "FaBullseye"),
+  ];
+    const sLoaded = await Promise.all(
+    iconNames.map(name => iconBase64(`fa/${name}`, "#FFFFFF", 128))
+  );
     solutions.forEach((sol, i) => {
       const x = 0.5 + i * 3.1;
       s.addShape("roundRect", { x, y: 1.82, w: 2.88, h: 3.45, fill: { color: C.cardBg }, line: { color: "333333", width: 0.5 }, rectRadius: 0.08, shadow: mkShadow() });
