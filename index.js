@@ -179,13 +179,13 @@ async function generateDeck(data) {
     redLine(s, 0.5, 1.86, 1.0);
     s.addText(company_name.toUpperCase(), { x: 0.5, y: 1.98, w: 6, h: 0.28, fontSize: 10, fontFace: "Arial", color: C.red, bold: true, charSpacing: 2, margin: 0 });
     [problem_1, problem_2, problem_3].forEach((prob, i) => {
-      const y = 2.32 + i * 1.14;
+      const y = 2.28 + i * 1.18;
       const pLen = String(prob).length;
-      const pSize = pLen > 200 ? 8 : pLen > 160 ? 9 : pLen > 120 ? 10 : pLen > 80 ? 11 : 12;
-      s.addShape("roundRect", { x: 0.5, y, w: 9.0, h: 1.04, fill: { color: C.cardBg }, line: { color: C.dark3, width: 0.5 }, rectRadius: 0.06, shadow: mkShadow() });
-      s.addImage({ data: pLoaded[i], x: 0.68, y: y+0.32, w: 0.30, h: 0.30 });
-      s.addText(`0${i+1}`, { x: 1.10, y: y+0.07, w: 0.4, h: 0.24, fontSize: 9, fontFace: "Arial", color: C.red, bold: true, margin: 0 });
-      s.addText(prob, { x: 1.10, y: y+0.30, w: 8.2, h: 0.66, fontSize: pSize, fontFace: "Arial", color: C.offWhite, margin: 0 });
+      const pSize = pLen > 260 ? 7 : pLen > 220 ? 7.5 : pLen > 180 ? 8 : pLen > 140 ? 9 : pLen > 100 ? 10 : 11;
+      s.addShape("roundRect", { x: 0.5, y, w: 9.0, h: 1.08, fill: { color: C.cardBg }, line: { color: C.dark3, width: 0.5 }, rectRadius: 0.06, shadow: mkShadow() });
+      s.addImage({ data: pLoaded[i], x: 0.66, y: y+0.34, w: 0.28, h: 0.28 });
+      s.addText(`0${i+1}`, { x: 1.06, y: y+0.06, w: 0.38, h: 0.22, fontSize: 8, fontFace: "Arial", color: C.red, bold: true, margin: 0 });
+      s.addText(prob, { x: 1.06, y: y+0.26, w: 8.30, h: 0.76, fontSize: pSize, fontFace: "Arial", color: C.offWhite, margin: 0, lineSpacingMultiple: 1.1 });
     });
   }
 
@@ -199,11 +199,11 @@ async function generateDeck(data) {
     [solution_1, solution_2, solution_3].forEach((sol, i) => {
       const x = 0.5 + i * 3.1;
       const solLen = String(sol).length;
-      const solSize = solLen > 200 ? 9 : solLen > 150 ? 10 : solLen > 100 ? 11 : 12;
+      const solSize = solLen > 180 ? 9 : solLen > 140 ? 10 : solLen > 100 ? 11 : 12;
       s.addShape("roundRect", { x, y: 1.82, w: 2.88, h: 3.45, fill: { color: C.cardBg }, line: { color: C.dark3, width: 0.5 }, rectRadius: 0.08, shadow: mkShadow() });
       s.addImage({ data: sLoaded[i], x: x+1.14, y: 2.08, w: 0.60, h: 0.60 });
       s.addText(`0${i+1}`, { x: x+0.1, y: 2.72, w: 2.68, h: 0.32, fontSize: 12, fontFace: "Arial", color: C.red, bold: true, align: "center", margin: 0 });
-      s.addText(sol, { x: x+0.14, y: 3.08, w: 2.60, h: 2.10, fontSize: solSize, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0 });
+      s.addText(sol, { x: x+0.12, y: 3.02, w: 2.64, h: 2.18, fontSize: solSize, fontFace: "Arial", color: C.offWhite, align: "center", margin: 0, lineSpacingMultiple: 1.2 });
     });
   }
 
