@@ -221,7 +221,7 @@ async function generateDeck(data) {
     s.addText("We don't guess. We diagnose, build, and scale. Every strategy is built on data from your market, not templates from another industry.", { x: 1.30, y: 3.72, w: 7.8, h: 0.85, fontSize: 12, fontFace: "Arial", color: C.offWhite, italic: true, margin: 0 });
     s.addText("— ProScaleMEDIA, Dubai", { x: 1.30, y: 4.60, w: 5, h: 0.28, fontSize: 10, fontFace: "Arial", color: C.red, margin: 0 });
   }
-
+ 
   // SLIDE 5 — CTA
   {
     const s = pres.addSlide();
