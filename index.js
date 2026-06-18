@@ -232,7 +232,8 @@ async function generateDeck(data) {
     redLine(s, 0.5, 0.82, 1.5);
     s.addText("Ready to\nScale?", { x: 0.5, y: 0.98, w: 5.0, h: 1.60, fontSize: 42, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
     offer_line = "Only 3 strategy spots left this month.",
-    cta_line = "Book Your Free Strategy Call",    s.addShape("roundRect", { x: 0.5, y: 3.60, w: 3.5, h: 0.68, fill: { color: C.red }, line: { color: C.red, width: 0 }, rectRadius: 0.05, shadow: { type: "outer", color: "000000", blur: 10, offset: 3, angle: 45, opacity: 0.4 } });
+    cta_line = "Book Your Free Strategy Call",
+    s.addShape("roundRect", { x: 0.5, y: 3.60, w: 3.5, h: 0.68, fill: { color: C.red }, line: { color: C.red, width: 0 }, rectRadius: 0.05, shadow: { type: "outer", color: "000000", blur: 10, offset: 3, angle: 45, opacity: 0.4 } });
     s.addText(cta_line, { x: 0.5, y: 3.60, w: 3.5, h: 0.68, fontSize: 12, fontFace: "Arial", color: C.white, bold: true, align: "center", valign: "middle", margin: 0, hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" } });
     s.addText("calendly.com/contact-pro-scalemedia/30min", { x: 0.5, y: 4.48, w: 5.2, h: 0.26, fontSize: 9, fontFace: "Arial", color: C.red, margin: 0, hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" } });
     s.addText("contact@pro-scalemedia.com  ·  pro-scalemedia.com  ·  Dubai, UAE", { x: 0.5, y: 4.76, w: 5.5, h: 0.22, fontSize: 9, fontFace: "Arial", color: C.dark5, margin: 0 });
