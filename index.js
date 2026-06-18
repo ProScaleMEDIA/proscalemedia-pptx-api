@@ -43,13 +43,45 @@ async function iconBase64(iconPath, color = "#FE0000", size = 256) {
   }
 }
 
+// ─── ICON ALIAS MAP ───────────────────────────────────────────────
+const ICON_ALIASES = {
+  FaGoogle:        "FaSearch",
+  FaInstagram:     "FaCamera",
+  FaFacebook:      "FaThumbsUp",
+  FaTwitter:       "FaComment",
+  FaLinkedin:      "FaBriefcase",
+  FaYoutube:       "FaPlay",
+  FaTiktok:        "FaVideo",
+  FaWhatsapp:      "FaPhone",
+  FaSeo:           "FaSearch",
+  FaAnalytics:     "FaChartBar",
+  FaMarketing:     "FaBullhorn",
+  FaAds:           "FaBullseye",
+  FaConversion:    "FaChartLine",
+  FaReviews:       "FaStar",
+  FaLocal:         "FaMapMarkerAlt",
+  FaGrowth:        "FaChartLine",
+  FaReputation:    "FaShieldAlt",
+  FaVisibility:    "FaEye",
+  FaRanking:       "FaTrophy",
+  FaLeads:         "FaUsers",
+  FaRevenue:       "FaDollarSign",
+  FaSpeed:         "FaRocket",
+  FaWebsite:       "FaGlobe",
+  FaBrand:         "FaPaintBrush",
+  FaContent:       "FaPen",
+  FaEmail:         "FaEnvelope",
+};
+
 // ─── SAFE ICON NAME ───────────────────────────────────────────────
 function safeFaIcon(name) {
   if (!name) return "FaRocket";
   const cleaned = name.trim();
-  if (/^Fa[A-Z]/.test(cleaned)) return cleaned;
-  if (/^[A-Z]/.test(cleaned)) return "Fa" + cleaned;
-  return "Fa" + cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+  let resolved;
+  if (/^Fa[A-Z]/.test(cleaned)) resolved = cleaned;
+  else if (/^[A-Z]/.test(cleaned)) resolved = "Fa" + cleaned;
+  else resolved = "Fa" + cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+  return ICON_ALIASES[resolved] || resolved;
 }
 
 const mkShadow = () => ({
@@ -128,8 +160,8 @@ async function generateDeck(data) {
     redLine(s, 0.5, 1.22, 1.5);
     s.addText("BRAND GROWTH AGENCY · DUBAI", { x: 0.5, y: 1.34, w: 5.5, h: 0.24, fontSize: 8, fontFace: "Arial", color: C.dark5, charSpacing: 3, margin: 0 });
     const hlLen = String(headline).length;
-    const hlSize = hlLen > 120 ? 16 : hlLen > 90 ? 18 : hlLen > 70 ? 21 : hlLen > 50 ? 24 : 28;
-    s.addText(headline, { x: 0.5, y: 1.65, w: 5.8, h: 2.10, fontSize: hlSize, fontFace: "Arial", color: C.white, bold: true, margin: 0 });
+    const hlSize = hlLen > 140 ? 14 : hlLen > 110 ? 16 : hlLen > 85 ? 18 : hlLen > 65 ? 20 : hlLen > 45 ? 23 : 26;
+    s.addText(headline, { x: 0.5, y: 1.60, w: 5.8, h: 2.30, fontSize: hlSize, fontFace: "Arial", color: C.white, bold: true, margin: 0, autoFit: false });
     s.addText(company_name.toUpperCase(), { x: 0.5, y: 3.88, w: 5.5, h: 0.30, fontSize: 11, fontFace: "Arial", color: C.red, bold: true, charSpacing: 3, margin: 0 });
     if (website) s.addText(website, { x: 0.5, y: 4.18, w: 5.5, h: 0.24, fontSize: 9, fontFace: "Arial", color: C.muted, margin: 0 });
     s.addShape("roundRect", { x: 0.5, y: 4.50, w: 1.65, h: 0.50, fill: { color: C.red }, line: { color: C.red, width: 0 }, rectRadius: 0.05 });
@@ -147,13 +179,13 @@ async function generateDeck(data) {
     redLine(s, 0.5, 1.86, 1.0);
     s.addText(company_name.toUpperCase(), { x: 0.5, y: 1.98, w: 6, h: 0.28, fontSize: 10, fontFace: "Arial", color: C.red, bold: true, charSpacing: 2, margin: 0 });
     [problem_1, problem_2, problem_3].forEach((prob, i) => {
-      const y = 2.38 + i * 1.08;
+      const y = 2.32 + i * 1.14;
       const pLen = String(prob).length;
-      const pSize = pLen > 160 ? 9 : pLen > 120 ? 10 : pLen > 80 ? 11 : 12;
-      s.addShape("roundRect", { x: 0.5, y, w: 9.0, h: 0.96, fill: { color: C.cardBg }, line: { color: C.dark3, width: 0.5 }, rectRadius: 0.06, shadow: mkShadow() });
-      s.addImage({ data: pLoaded[i], x: 0.72, y: y+0.28, w: 0.32, h: 0.32 });
-      s.addText(`0${i+1}`, { x: 1.16, y: y+0.06, w: 0.4, h: 0.26, fontSize: 9, fontFace: "Arial", color: C.red, bold: true, margin: 0 });
-      s.addText(prob, { x: 1.16, y: y+0.30, w: 8.1, h: 0.58, fontSize: pSize, fontFace: "Arial", color: C.offWhite, margin: 0 });
+      const pSize = pLen > 200 ? 8 : pLen > 160 ? 9 : pLen > 120 ? 10 : pLen > 80 ? 11 : 12;
+      s.addShape("roundRect", { x: 0.5, y, w: 9.0, h: 1.04, fill: { color: C.cardBg }, line: { color: C.dark3, width: 0.5 }, rectRadius: 0.06, shadow: mkShadow() });
+      s.addImage({ data: pLoaded[i], x: 0.68, y: y+0.32, w: 0.30, h: 0.30 });
+      s.addText(`0${i+1}`, { x: 1.10, y: y+0.07, w: 0.4, h: 0.24, fontSize: 9, fontFace: "Arial", color: C.red, bold: true, margin: 0 });
+      s.addText(prob, { x: 1.10, y: y+0.30, w: 8.2, h: 0.66, fontSize: pSize, fontFace: "Arial", color: C.offWhite, margin: 0 });
     });
   }
 
