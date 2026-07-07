@@ -97,7 +97,7 @@ async function slide1(pptx, data) {
   // Full black background
   s.addShape("rect", {
     x: 0, y: 0, w: W, h: H,
-    fill: { color: C.black },
+    fill: { color: "111111", },
     line: { color: C.black, width: 0 },
   });
 
@@ -112,13 +112,13 @@ async function slide1(pptx, data) {
   s.addImage({ data: LOGO_LIGHT, x: 0.5, y: 0.22, w: 2.6, h: 0.55 });
 
   // MARKETING AUDIT eyebrow
-  s.addText("PERFORMANCE MARKETING AUDIT", {
-    x: 0.5, y: 2.0, w: 8, h: 0.35,
-    fontSize: 9,
+  s.addText(headline, {
+    x: 0.5, y: 1.22, w: 12.3, h: 0.9,
+    fontSize: hlSize,
     fontFace: "Arial",
-    color: C.red,
+    color: C.black,
     bold: true,
-    charSpacing: 4,
+    charSpacing: 1,
     margin: 0,
   });
 
@@ -403,7 +403,7 @@ async function slide3(pptx, data) {
     });
 
     // Solution text
-    const sSize = dynamicFontSize(sol, 160, 11, 10, 9);
+    const sSize = dynamicFontSize(sol, 140, 13.5, 12, 10.5);
     s.addText(sol, {
       x: x + 0.2, y: cardY + 0.85, w: cardW - 0.4, h: cardH - 1.1,
       fontSize: sSize,
@@ -503,7 +503,7 @@ async function slide4(pptx, data) {
     });
 
     // Label
-    const labelSize = dynamicFontSize(st.label, 50, 9.5, 8.5, 7.5);
+    const labelSize = dynamicFontSize(st.label, 45, 11, 10, 9);
     s.addText(st.label, {
       x: x + 0.15, y: cardY + 1.75, w: cardW - 0.3, h: cardH - 1.95,
       fontSize: labelSize,
@@ -588,6 +588,7 @@ async function slide5(pptx, data) {
     align: "center",
     valign: "middle",
     margin: 0,
+    hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" },
   });
 
   // Calendly link
