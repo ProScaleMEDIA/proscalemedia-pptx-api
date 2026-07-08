@@ -94,35 +94,30 @@ function dynamicFontSize(text, maxChars, large, medium, small) {
 async function slide1(pptx, data) {
   const s = pptx.addSlide();
 
-  // Full black background
   s.addShape("rect", {
     x: 0, y: 0, w: W, h: H,
-    fill: { color: "111111", },
+    fill: { color: C.black },
     line: { color: C.black, width: 0 },
   });
 
-  // Red accent bar top
   s.addShape("rect", {
     x: 0, y: 0, w: W, h: 0.06,
     fill: { color: C.red },
     line: { color: C.red, width: 0 },
   });
 
-  // Logo top left
   s.addImage({ data: LOGO_LIGHT, x: 0.5, y: 0.22, w: 2.6, h: 0.55 });
 
-  // MARKETING AUDIT eyebrow
-  s.addText(headline, {
-    x: 0.5, y: 1.22, w: 12.3, h: 0.9,
-    fontSize: hlSize,
+  s.addText("PERFORMANCE MARKETING AUDIT", {
+    x: 0.5, y: 2.0, w: 8, h: 0.35,
+    fontSize: 9,
     fontFace: "Arial",
-    color: C.black,
+    color: C.red,
     bold: true,
-    charSpacing: 1,
+    charSpacing: 4,
     margin: 0,
   });
 
-  // Company name — dynamic size
   const companyName = data.company_name || "Business Name";
   const headlineSize = dynamicFontSize(companyName, 20, 48, 38, 30);
   s.addText(companyName.toUpperCase(), {
@@ -134,10 +129,8 @@ async function slide1(pptx, data) {
     margin: 0,
   });
 
-  // Red underline under company name
   redLine(s, 0.5, 4.0, 3.5);
 
-  // Subtitle
   s.addText("Prepared by ProScaleMEDIA", {
     x: 0.5, y: 4.15, w: 6, h: 0.35,
     fontSize: 11,
@@ -146,7 +139,6 @@ async function slide1(pptx, data) {
     margin: 0,
   });
 
-  // Date
   const month = new Date().toLocaleString("en-US", { month: "long" });
   const year = new Date().getFullYear();
   s.addText(`${month} ${year}`, {
@@ -158,9 +150,8 @@ async function slide1(pptx, data) {
     margin: 0,
   });
 
-  // Audit score badge — bottom right
   if (data.audit_score) {
-    const score = String(data.audit_score).replace("/100", "").replace("100", "");
+    const score = String(data.audit_score).replace("/100", "");
     s.addShape("roundRect", {
       x: 11.2, y: 6.3, w: 1.6, h: 0.9,
       fill: { color: C.cardDark },
@@ -188,7 +179,6 @@ async function slide1(pptx, data) {
     });
   }
 
-  // Red accent bar bottom
   s.addShape("rect", {
     x: 0, y: H - 0.06, w: W, h: 0.06,
     fill: { color: C.red },
@@ -653,3 +643,4 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
