@@ -283,9 +283,11 @@ async function slide2(pptx, data) {
     const pSize = dynamicFontSize(p.text, 180, 11, 10, 9);
     s.addText(p.text, {
       x: x + 0.16, y: cardY + 0.58, w: cardW - 0.28, h: cardH - 0.72,
-      fontSize: pSize,
+      fontSize: 17,
       fontFace: "Arial",
       color: C.black,
+      align: "center",
+      valign: "middle",
       margin: 0,
       wrap: true,
     });
