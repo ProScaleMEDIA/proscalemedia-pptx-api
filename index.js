@@ -20,7 +20,6 @@ const C = {
   white:       "FFFFFF",
   offWhite:    "F8F6F2",
   red:         "FE0000",
-  gold:        "C9A84C",
   muted:       "888888",
   dimmed:      "555555",
   cardDark:    "0D0D0D",
@@ -43,7 +42,7 @@ async function slide1(pptx, data) {
   // Full black background
   s.addShape("rect", { x:0, y:0, w:W, h:H, fill:{color:C.black}, line:{color:C.black,width:0} });
 
-  // Top accent: red then gold
+  // Top accent: red
   redBar(s, 0, 0, W, 0.06);
 
   // Logo — WHITE on black — BIGGER
@@ -62,9 +61,6 @@ async function slide1(pptx, data) {
     charSpacing: 5,
     margin: 0,
   });
-
-  // Gold rule under eyebrow
-  goldBar(s, 0.75, 2.34, 5.0, 0.02);
 
   // Company name — Playfair Display
   const name = (data.company_name || "Your Business").toUpperCase();
@@ -130,7 +126,7 @@ async function slide1(pptx, data) {
     });
   }
 
-  // Bottom accent: gold then red
+  // Bottom accent: red
   redBar(s, 0, H - 0.06, W, 0.06);
 }
 
