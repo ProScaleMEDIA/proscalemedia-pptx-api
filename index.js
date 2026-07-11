@@ -49,7 +49,6 @@ async function slide1(pptx, data) {
 
   // Top accent: red then gold
   redBar(s, 0, 0, W, 0.06);
-  goldBar(s, 0, 0.06, W, 0.022);
 
   // Logo — WHITE on black — BIGGER
   s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.2, w: 5.27, h: 1.12 });
@@ -60,7 +59,7 @@ async function slide1(pptx, data) {
   // Eyebrow — 14pt
   s.addText("PERFORMANCE MARKETING AUDIT", {
     x: 0.75, y: 1.92, w: 9, h: 0.4,
-    fontSize: 14,
+    fontSize: 16,
     fontFace: FONT_BODY,
     color: C.red,
     bold: true,
@@ -98,7 +97,7 @@ async function slide1(pptx, data) {
   const now = new Date();
   s.addText(`${now.toLocaleString("en-US",{month:"long"})} ${now.getFullYear()}`, {
     x: 0.75, y: 4.92, w: 5, h: 0.3,
-    fontSize: 9,
+    fontSize: 12,
     fontFace: FONT_BODY,
     color: C.dimmed,
     charSpacing: 3,
@@ -136,7 +135,6 @@ async function slide1(pptx, data) {
   }
 
   // Bottom accent: gold then red
-  goldBar(s, 0, H - 0.082, W, 0.022);
   redBar(s, 0, H - 0.06, W, 0.06);
 }
 
@@ -149,16 +147,15 @@ async function slide2(pptx, data) {
 
   // Black top bar
   s.addShape("rect", { x:0, y:0, w:W, h:0.82, fill:{color:C.black}, line:{color:C.black,width:0} });
-  goldBar(s, 0, 0.82, W, 0.022);
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black bar — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.62 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.9, h: 0.62 });
 
   // Section label — 14pt
   s.addText("WHAT WE FOUND", {
     x: 0.55, y: 1.02, w: 8, h: 0.38,
-    fontSize: 14,
+    fontSize: 16,
     fontFace: FONT_BODY,
     color: C.red,
     bold: true,
@@ -178,9 +175,6 @@ async function slide2(pptx, data) {
     charSpacing: 0.5,
     margin: 0,
   });
-
-  // Gold rule under headline
-  goldBar(s, 0.55, 2.28, 3.5, 0.022);
 
   // Three problem cards
   const problems = [
@@ -203,16 +197,13 @@ async function slide2(pptx, data) {
       rectRadius: 0.07,
     });
 
-    // Gold top stripe
-    goldBar(s, x, cY, cW, 0.025);
-
     // Red left stripe
     s.addShape("rect", { x, y: cY, w: 0.055, h: cH, fill:{color:C.red}, line:{color:C.red,width:0} });
 
     // Number — Playfair Display
     s.addText(p.num, {
       x: x + 0.16, y: cY + 0.12, w: 0.65, h: 0.42,
-      fontSize: 11,
+      fontSize: 40,
       fontFace: FONT_HEADLINE,
       color: C.red,
       bold: true,
@@ -225,7 +216,7 @@ async function slide2(pptx, data) {
       fontSize: 17,
       fontFace: FONT_BODY,
       color: "111111",
-      align: "left",
+      align: "Center",
       valign: "middle",
       margin: 6,
       wrap: true,
@@ -246,12 +237,12 @@ async function slide3(pptx, data) {
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.62 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.9, h: 0.62 });
 
   // Section label — 14pt
   s.addText("HOW WE SOLVE THIS", {
     x: 0.55, y: 1.02, w: 8, h: 0.38,
-    fontSize: 14,
+    fontSize: 16,
     fontFace: FONT_BODY,
     color: C.red,
     bold: true,
@@ -290,9 +281,6 @@ async function slide3(pptx, data) {
       line: { color: C.border, width: 0.8 },
       rectRadius: 0.07,
     });
-
-    // Gold top stripe
-    goldBar(s, x, cY, cW, 0.025);
 
     // Step number — Playfair Display
     s.addText(`0${i + 1}`, {
@@ -334,12 +322,12 @@ async function slide4(pptx, data) {
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.62 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.9, h: 0.62 });
 
   // Section label — 14pt
   s.addText("RESULTS WE HAVE DELIVERED", {
     x: 0.55, y: 1.02, w: 9, h: 0.38,
-    fontSize: 14,
+    fontSize: 16,
     fontFace: FONT_BODY,
     color: C.red,
     bold: true,
@@ -380,9 +368,6 @@ async function slide4(pptx, data) {
       rectRadius: 0.07,
     });
 
-    // Gold top stripe
-    goldBar(s, x, cY, cW, 0.025);
-
     // Big stat — Playfair Display
     const statSize = st.stat.length <= 4 ? 64 : 50;
     s.addText(st.stat, {
@@ -395,9 +380,6 @@ async function slide4(pptx, data) {
       valign: "middle",
       margin: 0,
     });
-
-    // Gold divider
-    goldBar(s, x + 0.45, cY + 1.8, cW - 0.9, 0.022);
 
     // Label — 15pt, Gill Sans MT, vertically centered
     s.addText(st.label, {
@@ -422,14 +404,12 @@ async function slide5(pptx, data) {
 
   // Top accents
   redBar(s, 0, 0, W, 0.06);
-  goldBar(s, 0, 0.06, W, 0.022);
 
   // Bottom accents
-  goldBar(s, 0, H - 0.082, W, 0.022);
   redBar(s, 0, H - 0.06, W, 0.06);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.18, w: 4.3, h: 0.62 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.18, w: 3.9, h: 0.62 });
 
   // Vertical red line left accent
   s.addShape("rect", { x:0.55, y:2.05, w:0.045, h:2.3, fill:{color:C.red}, line:{color:C.red,width:0} });
@@ -437,16 +417,13 @@ async function slide5(pptx, data) {
   // NEXT STEP — 14pt
   s.addText("NEXT STEP", {
     x: 0.75, y: 2.12, w: 9, h: 0.4,
-    fontSize: 14,
+    fontSize: 16,
     fontFace: FONT_BODY,
     color: C.red,
     bold: true,
     charSpacing: 5,
     margin: 0,
   });
-
-  // Gold rule
-  goldBar(s, 0.75, 2.55, 4.0, 0.022);
 
   // Main headline — Playfair Display
   s.addText("Fifteen minutes.\nLet us show you the exact plan.", {
@@ -462,7 +439,7 @@ async function slide5(pptx, data) {
   // Offer line — italic, luxury treatment
   s.addText(String(data.offer_line || "Only 3 spots remain for new clients this month"), {
     x: 0.75, y: 4.45, w: 10.5, h: 0.45,
-    fontSize: 13,
+    fontSize: 15,
     fontFace: FONT_BODY,
     color: "BBBBBB",
     italic: true,
@@ -478,7 +455,7 @@ async function slide5(pptx, data) {
   });
   s.addText(String(data.cta_line || "Book Your Free Strategy Call"), {
     x: 0.75, y: 5.08, w: 5.2, h: 0.82,
-    fontSize: 14,
+    fontSize: 22,
     fontFace: FONT_BODY,
     color: C.white,
     bold: true,
@@ -491,7 +468,7 @@ async function slide5(pptx, data) {
   // Calendly URL
   s.addText("calendly.com/contact-pro-scalemedia/30min", {
     x: 0.75, y: 6.08, w: 7, h: 0.3,
-    fontSize: 9.5,
+    fontSize: 12,
     fontFace: FONT_BODY,
     color: C.muted,
     margin: 0,
@@ -500,7 +477,7 @@ async function slide5(pptx, data) {
   // Website
   s.addText("pro-scalemedia.com", {
     x: 0.75, y: 6.45, w: 5, h: 0.28,
-    fontSize: 9,
+    fontSize: 10,
     fontFace: FONT_BODY,
     color: C.dimmed,
     charSpacing: 2,
