@@ -256,8 +256,6 @@ async function slide3(pptx, data) {
     margin: 0,
   });
 
-  goldBar(s, 0.55, 2.15, 3.0, 0.022);
-
   const solutions = [
     String(data.solution_1 || ""),
     String(data.solution_2 || ""),
@@ -339,8 +337,6 @@ async function slide4(pptx, data) {
     charSpacing: 0.5,
     margin: 0,
   });
-
-  goldBar(s, 0.55, 2.15, 3.0, 0.022);
 
   const stats = [
     { stat: String(data.proof_stat_1 || "620+"), label: String(data.proof_label_1 || "") },
