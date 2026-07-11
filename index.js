@@ -36,10 +36,6 @@ const H = 7.5;
 function redBar(s, x, y, w, h = 0.04) {
   s.addShape("rect", { x, y, w, h, fill: { color: C.red }, line: { color: C.red, width: 0 } });
 }
-function goldBar(s, x, y, w, h = 0.022) {
-  s.addShape("rect", { x, y, w, h, fill: { color: C.gold }, line: { color: C.gold, width: 0 } });
-}
-
 // ─── SLIDE 1: COVER ──────────────────────────────────────────────
 async function slide1(pptx, data) {
   const s = pptx.addSlide();
@@ -149,10 +145,10 @@ async function slide2(pptx, data) {
   s.addShape("rect", { x:0, y:0, w:W, h:0.82, fill:{color:C.black}, line:{color:C.black,width:0} });
   redBar(s, 0, 0.842, W, 0.032);
 
-  // Logo — white on black bar — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.9, h: 0.62 });
+  // Logo — white on black bar 
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.5, h: 0.62 });
 
-  // Section label — 14pt
+  // Section label — 16pt
   s.addText("WHAT WE FOUND", {
     x: 0.55, y: 1.02, w: 8, h: 0.38,
     fontSize: 16,
@@ -200,15 +196,14 @@ async function slide2(pptx, data) {
     // Red left stripe
     s.addShape("rect", { x, y: cY, w: 0.055, h: cH, fill:{color:C.red}, line:{color:C.red,width:0} });
 
-    // Number — Playfair Display
-    s.addText(p.num, {
-      x: x + 0.16, y: cY + 0.12, w: 0.65, h: 0.42,
-      fontSize: 40,
+     // Step number — Playfair Display
+    s.addText(`0${i + 1}`, {
+      x: x + 0.22, y: cY + 0.16, w: 0.75, h: 0.5,
+      fontSize: 24,
       fontFace: FONT_HEADLINE,
       color: C.red,
       bold: true,
       margin: 0,
-    });
 
     // Problem text — 17pt, Gill Sans MT, vertically centered
     s.addText(p.text, {
@@ -233,13 +228,12 @@ async function slide3(pptx, data) {
 
   // Top bar
   s.addShape("rect", { x:0, y:0, w:W, h:0.82, fill:{color:C.cardMid}, line:{color:C.cardMid,width:0} });
-  goldBar(s, 0, 0.82, W, 0.022);
   redBar(s, 0, 0.842, W, 0.032);
 
-  // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.9, h: 0.62 });
+  // Logo — white on black
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.5, h: 0.62 });
 
-  // Section label — 14pt
+  // Section label — 16pt
   s.addText("HOW WE SOLVE THIS", {
     x: 0.55, y: 1.02, w: 8, h: 0.38,
     fontSize: 16,
@@ -318,13 +312,12 @@ async function slide4(pptx, data) {
 
   // Black top bar
   s.addShape("rect", { x:0, y:0, w:W, h:0.82, fill:{color:C.black}, line:{color:C.black,width:0} });
-  goldBar(s, 0, 0.82, W, 0.022);
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.9, h: 0.62 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 3.5, h: 0.62 });
 
-  // Section label — 14pt
+  // Section label — 16pt
   s.addText("RESULTS WE HAVE DELIVERED", {
     x: 0.55, y: 1.02, w: 9, h: 0.38,
     fontSize: 16,
@@ -381,10 +374,10 @@ async function slide4(pptx, data) {
       margin: 0,
     });
 
-    // Label — 15pt, Gill Sans MT, vertically centered
+    // Label — 16pt, Gill Sans MT, vertically centered
     s.addText(st.label, {
       x: x + 0.15, y: cY + 1.92, w: cW - 0.3, h: cH - 2.08,
-      fontSize: 15,
+      fontSize: 16,
       fontFace: FONT_BODY,
       color: "BBBBBB",
       align: "center",
@@ -409,12 +402,12 @@ async function slide5(pptx, data) {
   redBar(s, 0, H - 0.06, W, 0.06);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.18, w: 3.9, h: 0.62 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.18, w: 3.5, h: 0.62 });
 
   // Vertical red line left accent
   s.addShape("rect", { x:0.55, y:2.05, w:0.045, h:2.3, fill:{color:C.red}, line:{color:C.red,width:0} });
 
-  // NEXT STEP — 14pt
+  // NEXT STEP — 16pt
   s.addText("NEXT STEP", {
     x: 0.75, y: 2.12, w: 9, h: 0.4,
     fontSize: 16,
@@ -468,7 +461,7 @@ async function slide5(pptx, data) {
   // Calendly URL
   s.addText("calendly.com/contact-pro-scalemedia/30min", {
     x: 0.75, y: 6.08, w: 7, h: 0.3,
-    fontSize: 12,
+    fontSize: 13,
     fontFace: FONT_BODY,
     color: C.muted,
     margin: 0,
