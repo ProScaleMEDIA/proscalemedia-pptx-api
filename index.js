@@ -52,7 +52,7 @@ async function slide1(pptx, data) {
   goldBar(s, 0, 0.06, W, 0.022);
 
   // Logo — WHITE on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.2, w: 5.27, h: 0.72 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.2, w: 5.27, h: 1.12 });
 
   // Vertical red line left accent
   s.addShape("rect", { x:0.55, y:1.85, w:0.045, h:2.9, fill:{color:C.red}, line:{color:C.red,width:0} });
@@ -87,7 +87,7 @@ async function slide1(pptx, data) {
   // Prepared by
   s.addText("Prepared exclusively by ProScaleMEDIA", {
     x: 0.75, y: 4.52, w: 7, h: 0.36,
-    fontSize: 11,
+    fontSize: 16,
     fontFace: FONT_BODY,
     color: C.muted,
     italic: true,
@@ -114,7 +114,6 @@ async function slide1(pptx, data) {
       line: { color: C.red, width: 1.8 },
       rectRadius: 0.07,
     });
-    goldBar(s, 11.0, 6.05, 1.85, 0.025);
     s.addText(score, {
       x: 11.0, y: 6.05, w: 1.85, h: 0.75,
       fontSize: 32,
@@ -154,7 +153,7 @@ async function slide2(pptx, data) {
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black bar — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.57 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.62 });
 
   // Section label — 14pt
   s.addText("WHAT WE FOUND", {
@@ -247,7 +246,7 @@ async function slide3(pptx, data) {
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.57 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.62 });
 
   // Section label — 14pt
   s.addText("HOW WE SOLVE THIS", {
@@ -335,7 +334,7 @@ async function slide4(pptx, data) {
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.57 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.45, y: 0.1, w: 4.3, h: 0.62 });
 
   // Section label — 14pt
   s.addText("RESULTS WE HAVE DELIVERED", {
@@ -430,7 +429,7 @@ async function slide5(pptx, data) {
   redBar(s, 0, H - 0.06, W, 0.06);
 
   // Logo — white on black — BIGGER
-  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.18, w: 4.3, h: 0.72 });
+  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.18, w: 4.3, h: 0.62 });
 
   // Vertical red line left accent
   s.addShape("rect", { x:0.55, y:2.05, w:0.045, h:2.3, fill:{color:C.red}, line:{color:C.red,width:0} });
