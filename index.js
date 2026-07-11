@@ -208,9 +208,9 @@ async function slide2(pptx, data) {
       fontSize: 17,
       fontFace: FONT_BODY,
       color: "111111",
-      align: "Center",
+      align: "center",
       valign: "middle",
-      margin: 6,
+      margin: 0,
       wrap: true,
     });
   }
@@ -366,7 +366,12 @@ async function slide4(pptx, data) {
       valign: "middle",
       margin: 0,
     });
-
+     // Red divider below stat number
+    s.addShape("rect", {
+      x: x + 0.6, y: cY + 1.75, w: cW - 1.2, h: 0.03,
+      fill: { color: C.red }, line: { color: C.red, width: 0 },
+    });
+    
     // Label — 16pt, Gill Sans MT, vertically centered
     s.addText(st.label, {
       x: x + 0.15, y: cY + 1.92, w: cW - 0.3, h: cH - 2.08,
