@@ -204,6 +204,7 @@ async function slide2(pptx, data) {
       color: C.red,
       bold: true,
       margin: 0,
+    });
 
     // Problem text — 17pt, Gill Sans MT, vertically centered
     s.addText(p.text, {
