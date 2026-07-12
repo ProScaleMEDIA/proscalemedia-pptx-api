@@ -445,11 +445,12 @@ async function slide5(pptx, data) {
     x: 0.75, y: 5.08, w: 5.2, h: 0.82,
     fontSize: 22,
     fontFace: FONT_BODY,
-    color: C.white,
+    color: "FFFFFF",
     bold: true,
     align: "center",
     valign: "middle",
     margin: 0,
+    underline: { style: "none" },
     hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" },
   });
 
