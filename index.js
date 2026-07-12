@@ -435,14 +435,15 @@ async function slide5(pptx, data) {
   });
 
   // CTA button — red, hyperlinked to Calendly
-  s.addShape("roundRect", {
+  // Red button shape, non-clickable, purely visual
+s.addShape("roundRect", {
   x: 0.75, y: 5.08, w: 5.2, h: 0.82,
   fill: { color: "E30613" },
   line: { color: "E30613", width: 0 },
   rectRadius: 0.08,
-  hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" },
 });
 
+// Button text, no hyperlink, forced white
 s.addText(String(data.cta_line || "Book Your Free Strategy Call"), {
   x: 0.75, y: 5.08, w: 5.2, h: 0.82,
   fontSize: 22,
@@ -452,6 +453,17 @@ s.addText(String(data.cta_line || "Book Your Free Strategy Call"), {
   align: "center",
   valign: "middle",
   margin: 0,
+});
+
+// Clickable Calendly link below the button
+s.addText("calendly.com/contact-pro-scalemedia/30min", {
+  x: 0.75, y: 5.95, w: 5.2, h: 0.35,
+  fontSize: 12,
+  fontFace: FONT_BODY,
+  color: "CCCCCC",
+  align: "left",
+  margin: 0,
+  hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" },
 });
 
   // Calendly URL
