@@ -444,27 +444,24 @@ s.addShape("roundRect", {
 });
 
 // Button text, no hyperlink, forced white
-s.addText(
-  [
-    {
-      text: String(data.cta_line || "Book Your Free Strategy Call"),
-      options: {
-        color: "FFFFFF",
-        bold: true,
-        fontSize: 22,
-        fontFace: FONT_BODY,
-        hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" },
-      },
-    },
-  ],
-  {
-    x: 0.75, y: 5.08, w: 5.2, h: 0.82,
-    fill: { color: "E30613" },
-    align: "center",
-    valign: "middle",
-    margin: 0,
-  }
-);
+s.addShape("roundRect", {
+  x: 0.75, y: 5.08, w: 5.2, h: 0.82,
+  fill: { color: "E30613" },
+  line: { color: "E30613", width: 0 },
+  rectRadius: 0.08,
+  hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/30min" },
+});
+
+s.addText(String(data.cta_line || "Book Your Free Strategy Call"), {
+  x: 0.75, y: 5.08, w: 5.2, h: 0.82,
+  fontSize: 22,
+  fontFace: FONT_BODY,
+  color: "FFFFFF",
+  bold: true,
+  align: "center",
+  valign: "middle",
+  margin: 0,
+});
 
   // Calendly URL
   s.addText("calendly.com/contact-pro-scalemedia/30min", {
