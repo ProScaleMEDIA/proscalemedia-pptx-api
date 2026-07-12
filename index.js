@@ -224,7 +224,7 @@ async function slide3(pptx, data) {
   s.addShape("rect", { x:0, y:0, w:W, h:H, fill:{color:C.black}, line:{color:C.black,width:0} });
 
   // Top bar
-  s.addShape("rect", { x:0, y:0, w:W, h:0.82, fill:{color:C.cardMid}, line:{color:C.cardMid,width:0} });
+  s.addShape("rect", { x:0, y:0, w:W, h:0.82, fill:{color:C.cardDark}, line:{color:C.cardDark,width:0} });
   redBar(s, 0, 0.842, W, 0.032);
 
   // Logo — white on black
