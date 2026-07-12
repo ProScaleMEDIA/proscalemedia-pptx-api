@@ -243,7 +243,7 @@ async function slide3(pptx, data) {
     x: 0.55, y: 1.45, w: 11, h: 0.72,
     fontSize: 24,
     fontFace: FONT_HEADLINE,
-    color: C.white,
+    color: C.black,
     bold: true,
     charSpacing: 0.5,
     margin: 0,
