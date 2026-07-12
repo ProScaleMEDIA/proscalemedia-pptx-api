@@ -202,10 +202,10 @@ async function slide2(pptx, data) {
       margin: 0,
     });
 
-    // Problem text — 17pt, Gill Sans MT, vertically centered
+    // Problem text — 21pt, Gill Sans MT, vertically centered
     s.addText(p.text, {
       x: x + 0.16, y: cY + 0.55, w: cW - 0.3, h: cH - 0.68,
-      fontSize: 17,
+      fontSize: 21,
       fontFace: FONT_BODY,
       color: "111111",
       align: "center",
