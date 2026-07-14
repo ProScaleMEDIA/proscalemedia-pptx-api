@@ -203,7 +203,7 @@ async function slide2(pptx, data) {
   const headline = data.headline || "Your brand is losing ground";
   s.addText(headline, {
     x: 0.55, y: 1.5, w: 12.2, h: 1.05,
-    fontSize: headlineFontSize(headline),
+    fontSize: 28,
     fontFace: FONT_HEADLINE,
     color: C.black,
     bold: true,
@@ -723,7 +723,7 @@ async function slide3Website(pptx, data) {
   const headline = data.headline || "Reviews exist. Destination does not.";
   s.addText(headline, {
     x: 0.55, y: 1.5, w: 12.2, h: 1.05,
-    fontSize: headlineFontSize(headline),
+    fontSize: 26,
     fontFace: FONT_HEADLINE,
     color: C.black,
     bold: true,
