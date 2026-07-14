@@ -501,6 +501,743 @@ async function slide5(pptx, data) {
   });
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// WEBSITE OFFER PIPELINE - 7 SLIDE DECK
+// Second offer path for leads with no website.
+// Narrative arc: cover → search reality → diagnosis → competitor gap
+//                → build phases → outcome ownership → CTA
+// Uses same brand system as marketing audit deck (fonts, colors, logos).
+// ═══════════════════════════════════════════════════════════════════
+
+// ─── SLIDE 1 WEBSITE: COVER ────────────────────────────────────────
+async function slide1Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.black);
+
+  redBar(s, 0, 0, W, 0.06);
+  redBar(s, 0, H - 0.06, W, 0.06);
+
+  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.32, w: 4.6, h: 0.98 });
+
+  s.addShape("rect", {
+    x: 0.55, y: 2.05, w: 0.05, h: 3.1,
+    fill: { color: C.red }, line: { color: C.red, width: 0 },
+  });
+
+  s.addText("WEBSITE STRATEGY BRIEF", {
+    x: 0.78, y: 2.1, w: 9, h: 0.4,
+    fontSize: 15,
+    fontFace: FONT_BODY,
+    color: C.red,
+    bold: true,
+    charSpacing: 5,
+    margin: 0,
+  });
+
+  const name = (data.company_name || "Your Business").toUpperCase();
+  s.addText(name, {
+    x: 0.78, y: 2.72, w: 11.5, h: 2.1,
+    fontSize: companyNameSize(name),
+    fontFace: FONT_HEADLINE,
+    color: C.white,
+    bold: true,
+    charSpacing: 1.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  s.addText("Prepared exclusively by ProScaleMEDIA", {
+    x: 0.78, y: 4.98, w: 8, h: 0.4,
+    fontSize: 15,
+    fontFace: FONT_BODY,
+    color: C.muted,
+    italic: true,
+    margin: 0,
+  });
+
+  const now = new Date();
+  const monthYear = `${now.toLocaleString("en-US", { month: "long" }).toUpperCase()} ${now.getFullYear()}`;
+  s.addText(monthYear, {
+    x: 0.78, y: 5.4, w: 6, h: 0.32,
+    fontSize: 11,
+    fontFace: FONT_BODY,
+    color: C.dimmed,
+    charSpacing: 4,
+    margin: 0,
+  });
+
+  // Reviews earned badge (emotional hook: real asset going to waste)
+  if (data.review_count) {
+    const reviewCount = String(data.review_count);
+    s.addShape("roundRect", {
+      x: 10.75, y: 5.95, w: 2.15, h: 1.25,
+      fill: { color: C.cardDark },
+      line: { color: C.red, width: 1.8 },
+      rectRadius: 0.09,
+    });
+    s.addText(reviewCount, {
+      x: 10.75, y: 5.98, w: 2.15, h: 0.82,
+      fontSize: 36,
+      fontFace: FONT_HEADLINE,
+      color: C.red,
+      bold: true,
+      align: "center",
+      valign: "bottom",
+      margin: 0,
+    });
+    s.addText("REVIEWS EARNED", {
+      x: 10.75, y: 6.82, w: 2.15, h: 0.32,
+      fontSize: 8,
+      fontFace: FONT_BODY,
+      color: C.muted,
+      align: "center",
+      charSpacing: 3,
+      margin: 0,
+    });
+  }
+}
+
+// ─── SLIDE 2 WEBSITE: THE REALITY CHECK (mock Google search) ───────
+async function slide2Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.offWhite);
+  addTopBar(s);
+
+  addEyebrow(s, "WHAT GOOGLE RETURNS TODAY", 0.55, 1.05, 8);
+
+  const query = `${data.company_name || "your business"} Dubai`;
+  s.addText(`Search: "${query}"`, {
+    x: 0.55, y: 1.5, w: 12, h: 0.55,
+    fontSize: 22,
+    fontFace: FONT_HEADLINE,
+    color: C.black,
+    bold: true,
+    charSpacing: 0.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  // Mock search results container
+  const boxX = 0.55, boxY = 2.35, boxW = 12.2, boxH = 3.75;
+
+  s.addShape("roundRect", {
+    x: boxX, y: boxY, w: boxW, h: boxH,
+    fill: { color: C.white },
+    line: { color: C.borderLight, width: 0.8 },
+    rectRadius: 0.08,
+  });
+
+  // Fake search bar at top of results box
+  s.addShape("roundRect", {
+    x: boxX + 0.35, y: boxY + 0.3, w: boxW - 0.7, h: 0.5,
+    fill: { color: C.offWhite },
+    line: { color: C.borderLight, width: 0.5 },
+    rectRadius: 0.06,
+  });
+  s.addText(`🔍   ${query}`, {
+    x: boxX + 0.55, y: boxY + 0.3, w: boxW - 1, h: 0.5,
+    fontSize: 12,
+    fontFace: FONT_BODY,
+    color: C.dimmed,
+    valign: "middle",
+    margin: 0,
+  });
+
+  // Three mock search results
+  const results = [
+    {
+      site: "tripadvisor.com › restaurants",
+      title: `${data.company_name || "Your Business"} - TripAdvisor`,
+      snippet: "Reviews, photos, and diner ratings. See what customers say about their experience.",
+    },
+    {
+      site: "zomato.com › dubai",
+      title: `${data.company_name || "Your Business"} Menu, Reviews - Zomato`,
+      snippet: "Order online. See menu, reviews, timings, contact number. Third-party booking.",
+    },
+    {
+      site: "facebook.com › pages",
+      title: `${data.company_name || "Your Business"} | Facebook`,
+      snippet: "Community, reviews, hours. Last updated 2 years ago. Not verified.",
+    },
+  ];
+
+  let resultY = boxY + 1.0;
+  for (const r of results) {
+    s.addText(r.site, {
+      x: boxX + 0.35, y: resultY, w: boxW - 0.7, h: 0.25,
+      fontSize: 10,
+      fontFace: FONT_BODY,
+      color: C.dimmed,
+      margin: 0,
+    });
+    s.addText(r.title, {
+      x: boxX + 0.35, y: resultY + 0.22, w: boxW - 0.7, h: 0.3,
+      fontSize: 14,
+      fontFace: FONT_BODY,
+      color: "1A0DAB",
+      bold: true,
+      margin: 0,
+    });
+    s.addText(r.snippet, {
+      x: boxX + 0.35, y: resultY + 0.52, w: boxW - 0.7, h: 0.28,
+      fontSize: 11,
+      fontFace: FONT_BODY,
+      color: C.textDark,
+      margin: 0,
+    });
+    resultY += 0.95;
+  }
+
+  // Red callout underneath the results
+  s.addShape("roundRect", {
+    x: 0.55, y: 6.25, w: 12.2, h: 0.8,
+    fill: { color: C.red },
+    line: { color: C.red, width: 0 },
+    rectRadius: 0.08,
+  });
+  s.addText("You own zero of these results.", {
+    x: 0.55, y: 6.25, w: 12.2, h: 0.8,
+    fontSize: 22,
+    fontFace: FONT_HEADLINE,
+    color: C.white,
+    bold: true,
+    align: "center",
+    valign: "middle",
+    charSpacing: 0.5,
+    margin: 0,
+  });
+}
+
+// ─── SLIDE 3 WEBSITE: DIAGNOSIS (three problem cards) ──────────────
+async function slide3Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.offWhite);
+  addTopBar(s);
+
+  addEyebrow(s, "WHAT THAT COSTS YOU", 0.55, 1.05, 8);
+
+  const headline = data.headline || "Reviews exist. Destination does not.";
+  s.addText(headline, {
+    x: 0.55, y: 1.5, w: 12.2, h: 1.05,
+    fontSize: headlineFontSize(headline),
+    fontFace: FONT_HEADLINE,
+    color: C.black,
+    bold: true,
+    charSpacing: 0.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  const problems = [
+    String(data.problem_1 || ""),
+    String(data.problem_2 || ""),
+    String(data.problem_3 || ""),
+  ];
+
+  const cW = 3.92, cH = 3.55, cY = 2.85, gap = 0.24, x0 = 0.55;
+
+  for (let i = 0; i < 3; i++) {
+    const x = x0 + i * (cW + gap);
+
+    s.addShape("roundRect", {
+      x, y: cY, w: cW, h: cH,
+      fill: { color: C.white },
+      line: { color: C.borderLight, width: 0.8 },
+      rectRadius: 0.08,
+    });
+
+    s.addShape("rect", {
+      x, y: cY, w: 0.06, h: cH,
+      fill: { color: C.red }, line: { color: C.red, width: 0 },
+    });
+
+    s.addText(`0${i + 1}`, {
+      x: x + 0.28, y: cY + 0.22, w: 0.8, h: 0.55,
+      fontSize: 28,
+      fontFace: FONT_HEADLINE,
+      color: C.red,
+      bold: true,
+      margin: 0,
+    });
+
+    s.addText(problems[i], {
+      x: x + 0.28, y: cY + 0.9, w: cW - 0.54, h: cH - 1.1,
+      fontSize: 20,
+      fontFace: FONT_BODY,
+      color: C.textDark,
+      align: "center",
+      valign: "middle",
+      margin: 0,
+      wrap: true,
+    });
+  }
+
+  redBar(s, 0, H - 0.04, W, 0.04);
+}
+
+// ─── SLIDE 4 WEBSITE: WHILE YOU WAIT (competitor comparison) ───────
+async function slide4Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.offWhite);
+  addTopBar(s);
+
+  addEyebrow(s, "WHILE YOU WAIT", 0.55, 1.05, 8);
+
+  s.addText("Competitors in your category built these last year.", {
+    x: 0.55, y: 1.5, w: 12, h: 0.85,
+    fontSize: 26,
+    fontFace: FONT_HEADLINE,
+    color: C.black,
+    bold: true,
+    charSpacing: 0.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  const cW = 3.92, cH = 4.15, cY = 2.65, gap = 0.24, x0 = 0.55;
+
+  // Column 1: YOU (red border, warning tone)
+  const youX = x0;
+  s.addShape("roundRect", {
+    x: youX, y: cY, w: cW, h: cH,
+    fill: { color: C.white },
+    line: { color: C.red, width: 1.5 },
+    rectRadius: 0.08,
+  });
+  s.addText("YOU", {
+    x: youX, y: cY + 0.25, w: cW, h: 0.5,
+    fontSize: 24,
+    fontFace: FONT_HEADLINE,
+    color: C.red,
+    bold: true,
+    align: "center",
+    charSpacing: 3,
+    margin: 0,
+  });
+  redBar(s, youX + 1.35, cY + 0.82, 1.22, 0.03);
+
+  const youItems = [
+    `${data.review_count || "Real"} Google reviews`,
+    "No owned website",
+    "No tracking pixel",
+    "No retargeting audiences",
+    "No owned booking data",
+  ];
+  let ly = cY + 1.15;
+  for (const item of youItems) {
+    s.addText(`✕  ${item}`, {
+      x: youX + 0.3, y: ly, w: cW - 0.6, h: 0.4,
+      fontSize: 14,
+      fontFace: FONT_BODY,
+      color: C.textDark,
+      valign: "middle",
+      margin: 0,
+    });
+    ly += 0.55;
+  }
+
+  // Column 2: COMPETITOR A (dark card)
+  const compAX = x0 + (cW + gap);
+  s.addShape("roundRect", {
+    x: compAX, y: cY, w: cW, h: cH,
+    fill: { color: C.cardDark },
+    line: { color: C.border, width: 0.8 },
+    rectRadius: 0.08,
+  });
+  s.addText("COMPETITOR A", {
+    x: compAX, y: cY + 0.25, w: cW, h: 0.5,
+    fontSize: 22,
+    fontFace: FONT_HEADLINE,
+    color: C.white,
+    bold: true,
+    align: "center",
+    charSpacing: 3,
+    margin: 0,
+  });
+  redBar(s, compAX + 1.35, cY + 0.82, 1.22, 0.03);
+
+  const compAItems = [
+    "Custom website",
+    "Meta Pixel installed",
+    "12,000 emails collected",
+    "Retargeting audiences built",
+    "Direct booking system",
+  ];
+  ly = cY + 1.15;
+  for (const item of compAItems) {
+    s.addText(`✓  ${item}`, {
+      x: compAX + 0.3, y: ly, w: cW - 0.6, h: 0.4,
+      fontSize: 14,
+      fontFace: FONT_BODY,
+      color: C.textLight,
+      valign: "middle",
+      margin: 0,
+    });
+    ly += 0.55;
+  }
+
+  // Column 3: COMPETITOR B (dark card)
+  const compBX = x0 + 2 * (cW + gap);
+  s.addShape("roundRect", {
+    x: compBX, y: cY, w: cW, h: cH,
+    fill: { color: C.cardDark },
+    line: { color: C.border, width: 0.8 },
+    rectRadius: 0.08,
+  });
+  s.addText("COMPETITOR B", {
+    x: compBX, y: cY + 0.25, w: cW, h: 0.5,
+    fontSize: 22,
+    fontFace: FONT_HEADLINE,
+    color: C.white,
+    bold: true,
+    align: "center",
+    charSpacing: 3,
+    margin: 0,
+  });
+  redBar(s, compBX + 1.35, cY + 0.82, 1.22, 0.03);
+
+  const compBItems = [
+    "Custom website",
+    "Google Analytics 4",
+    "8,400 emails collected",
+    "Review automation running",
+    "SEO ranking established",
+  ];
+  ly = cY + 1.15;
+  for (const item of compBItems) {
+    s.addText(`✓  ${item}`, {
+      x: compBX + 0.3, y: ly, w: cW - 0.6, h: 0.4,
+      fontSize: 14,
+      fontFace: FONT_BODY,
+      color: C.textLight,
+      valign: "middle",
+      margin: 0,
+    });
+    ly += 0.55;
+  }
+
+  redBar(s, 0, H - 0.04, W, 0.04);
+}
+
+// ─── SLIDE 5 WEBSITE: THE 14-DAY BUILD ─────────────────────────────
+async function slide5Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.offWhite);
+  addTopBar(s);
+
+  addEyebrow(s, "HOW WE BUILD THIS", 0.55, 1.05, 8);
+
+  s.addText("A modern website. Launched in 14 days.", {
+    x: 0.55, y: 1.5, w: 12, h: 0.85,
+    fontSize: 30,
+    fontFace: FONT_HEADLINE,
+    color: C.black,
+    bold: true,
+    charSpacing: 0.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  const solutions = [
+    String(data.solution_1 || ""),
+    String(data.solution_2 || ""),
+    String(data.solution_3 || ""),
+  ];
+
+  const phaseLabels = ["DAYS 1-3", "DAYS 4-11", "DAYS 12-14"];
+
+  const cW = 3.92, cH = 3.75, cY = 2.72, gap = 0.24, x0 = 0.55;
+
+  for (let i = 0; i < 3; i++) {
+    const x = x0 + i * (cW + gap);
+
+    s.addShape("roundRect", {
+      x, y: cY, w: cW, h: cH,
+      fill: { color: C.cardDark },
+      line: { color: C.border, width: 0.8 },
+      rectRadius: 0.08,
+    });
+
+    s.addText(`0${i + 1}`, {
+      x: x + 0.28, y: cY + 0.22, w: 0.8, h: 0.55,
+      fontSize: 28,
+      fontFace: FONT_HEADLINE,
+      color: C.red,
+      bold: true,
+      margin: 0,
+    });
+
+    s.addText(phaseLabels[i], {
+      x: x + 0.28, y: cY + 0.75, w: cW - 0.56, h: 0.25,
+      fontSize: 10,
+      fontFace: FONT_BODY,
+      color: C.red,
+      bold: true,
+      charSpacing: 3,
+      margin: 0,
+    });
+
+    redBar(s, x + 0.28, cY + 1.02, 0.6, 0.03);
+
+    s.addText(solutions[i], {
+      x: x + 0.28, y: cY + 1.22, w: cW - 0.54, h: cH - 1.42,
+      fontSize: 18,
+      fontFace: FONT_BODY,
+      color: C.textLight,
+      align: "center",
+      valign: "middle",
+      margin: 0,
+      wrap: true,
+    });
+  }
+
+  redBar(s, 0, H - 0.04, W, 0.04);
+}
+
+// ─── SLIDE 6 WEBSITE: WHAT YOU OWN AFTER 14 DAYS ───────────────────
+async function slide6Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.offWhite);
+  addTopBar(s);
+
+  addEyebrow(s, "WHAT YOU OWN AFTER LAUNCH", 0.55, 1.05, 9);
+
+  s.addText("Full digital infrastructure. Yours completely.", {
+    x: 0.55, y: 1.5, w: 12, h: 0.85,
+    fontSize: 28,
+    fontFace: FONT_HEADLINE,
+    color: C.black,
+    bold: true,
+    charSpacing: 0.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  const cW = 3.92, cH = 4.15, cY = 2.65, gap = 0.24, x0 = 0.55;
+
+  const columns = [
+    {
+      title: "THE WEBSITE",
+      items: [
+        "Custom design",
+        "Mobile responsive",
+        "Fast page loads",
+        "SEO foundation",
+        "Content management",
+      ],
+    },
+    {
+      title: "TRACKING + DATA",
+      items: [
+        "Google Analytics 4",
+        "Meta Pixel installed",
+        "Every visitor retargetable",
+        "Conversion events firing",
+        "Owned audience data",
+      ],
+    },
+    {
+      title: "GROWTH FOUNDATION",
+      items: [
+        "Booking or lead forms",
+        "Email collection built in",
+        "Review flow automation",
+        "Ready for paid traffic",
+        "Ready to scale day 15",
+      ],
+    },
+  ];
+
+  for (let i = 0; i < 3; i++) {
+    const x = x0 + i * (cW + gap);
+    const col = columns[i];
+
+    s.addShape("roundRect", {
+      x, y: cY, w: cW, h: cH,
+      fill: { color: C.white },
+      line: { color: C.borderLight, width: 0.8 },
+      rectRadius: 0.08,
+    });
+
+    s.addShape("rect", {
+      x, y: cY, w: 0.06, h: cH,
+      fill: { color: C.red }, line: { color: C.red, width: 0 },
+    });
+
+    s.addText(col.title, {
+      x: x + 0.28, y: cY + 0.35, w: cW - 0.56, h: 0.42,
+      fontSize: 14,
+      fontFace: FONT_BODY,
+      color: C.red,
+      bold: true,
+      charSpacing: 3,
+      margin: 0,
+    });
+
+    redBar(s, x + 0.28, cY + 0.85, 0.6, 0.03);
+
+    let ly = cY + 1.15;
+    for (const item of col.items) {
+      s.addText(`✓  ${item}`, {
+        x: x + 0.3, y: ly, w: cW - 0.6, h: 0.42,
+        fontSize: 14,
+        fontFace: FONT_BODY,
+        color: C.textDark,
+        valign: "middle",
+        margin: 0,
+      });
+      ly += 0.55;
+    }
+  }
+
+  redBar(s, 0, H - 0.04, W, 0.04);
+}
+
+// ─── SLIDE 7 WEBSITE: CTA ──────────────────────────────────────────
+async function slide7Website(pptx, data) {
+  const s = pptx.addSlide();
+
+  fillBg(s, C.black);
+
+  redBar(s, 0, 0, W, 0.06);
+  redBar(s, 0, H - 0.06, W, 0.06);
+
+  s.addImage({ data: LOGO_LIGHT, x: 0.55, y: 0.35, w: 4.2, h: 0.9 });
+
+  s.addShape("rect", {
+    x: 0.55, y: 2.4, w: 0.05, h: 2.5,
+    fill: { color: C.red }, line: { color: C.red, width: 0 },
+  });
+
+  s.addText("NEXT STEP", {
+    x: 0.78, y: 2.45, w: 9, h: 0.4,
+    fontSize: 15,
+    fontFace: FONT_BODY,
+    color: C.red,
+    bold: true,
+    charSpacing: 5,
+    margin: 0,
+  });
+
+  s.addText("Fifteen minutes.\nLet us show you the site you should have.", {
+    x: 0.78, y: 3.0, w: 11.5, h: 1.75,
+    fontSize: 40,
+    fontFace: FONT_HEADLINE,
+    color: C.white,
+    bold: true,
+    charSpacing: 0.5,
+    valign: "top",
+    margin: 0,
+  });
+
+  s.addText(String(data.offer_line || "3 website builds remain in July intake"), {
+    x: 0.78, y: 4.95, w: 11, h: 0.42,
+    fontSize: 16,
+    fontFace: FONT_BODY,
+    color: C.textMuted,
+    italic: true,
+    margin: 0,
+  });
+
+  s.addShape("roundRect", {
+    x: 0.78, y: 5.55, w: 5.4, h: 0.88,
+    fill: { color: C.red },
+    line: { color: C.red, width: 0 },
+    rectRadius: 0.1,
+  });
+
+  s.addText(
+    [{
+      text: String(data.cta_line || "Book Your Website Call"),
+      options: {
+        color: C.white,
+        bold: true,
+        fontSize: 22,
+        fontFace: FONT_BODY,
+        hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/website-strategy" },
+      },
+    }],
+    {
+      x: 0.78, y: 5.55, w: 5.4, h: 0.88,
+      align: "center",
+      valign: "middle",
+      margin: 0,
+    }
+  );
+
+  s.addText(
+    [{
+      text: "calendly.com/contact-pro-scalemedia/website-strategy",
+      options: {
+        color: C.textLight,
+        fontSize: 13,
+        fontFace: FONT_BODY,
+        hyperlink: { url: "https://calendly.com/contact-pro-scalemedia/website-strategy" },
+      },
+    }],
+    {
+      x: 0.78, y: 6.55, w: 7, h: 0.32,
+      align: "left",
+      margin: 0,
+    }
+  );
+
+  s.addText("pro-scalemedia.com", {
+    x: 0.78, y: 6.9, w: 6, h: 0.3,
+    fontSize: 11,
+    fontFace: FONT_BODY,
+    color: C.dimmed,
+    charSpacing: 3,
+    margin: 0,
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// SECOND ENDPOINT - WEBSITE OFFER DECK (7 slides)
+// ═══════════════════════════════════════════════════════════════════
+
+app.post("/generate-website-deck", async (req, res) => {
+  try {
+    const data = req.body;
+    if (!data || !data.company_name) {
+      return res.status(400).json({ error: "Missing company_name" });
+    }
+
+    const pptx = new pptxgen();
+    pptx.layout = "LAYOUT_WIDE";
+    pptx.defineLayout({ name: "LAYOUT_WIDE", width: W, height: H });
+
+    await slide1Website(pptx, data);
+    await slide2Website(pptx, data);
+    await slide3Website(pptx, data);
+    await slide4Website(pptx, data);
+    await slide5Website(pptx, data);
+    await slide6Website(pptx, data);
+    await slide7Website(pptx, data);
+
+    const buffer = await pptx.write("nodebuffer");
+    const filename = (data.company_name || "deck").replace(/[^a-z0-9]/gi, "_");
+
+    res.set({
+      "Content-Type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "Content-Disposition": `attachment; filename="${filename}_ProScaleMEDIA_Website.pptx"`,
+      "Content-Length": buffer.length,
+    });
+    res.send(buffer);
+
+  } catch (err) {
+    console.error("Website deck error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ─── GENERATE ENDPOINT ─────────────────────────────────────────────
 app.post("/generate", async (req, res) => {
   try {
