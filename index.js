@@ -427,7 +427,7 @@ async function slide5(pptx, data) {
     margin: 0,
   });
 
-  s.addText("Thirty minutes.\nLet us show you the exact plan.", {
+  s.addText("Fifteen minutes.\nLet us show you the exact plan.", {
     x: 0.78, y: 3.0, w: 11.5, h: 1.75,
     fontSize: 42,
     fontFace: FONT_HEADLINE,
